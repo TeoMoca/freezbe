@@ -25,7 +25,8 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const token = cookies.get("token");
   if (token) {
-    if (to.path === "/") return next({ path: "/home" });
+    if (to.path === "/" || !routes.some(({ path }) => path === to.path))
+      return next({ path: "/home" });
     return next();
   } else {
     if (to.path === "/") return next();
