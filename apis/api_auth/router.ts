@@ -1,12 +1,12 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import { default as ldap } from "ldapjs";
 import jwt from "jsonwebtoken";
 
 export const loginRouter = express.Router();
 
-loginRouter.post("/login", (req, res) => {
+loginRouter.post("/login", (req: Request, res: Response) => {
   const { username, password } = req.body;
-  const client = ldap.createClient({
+  const client: ldap.Client = ldap.createClient({
     url: "ldap://cybersec.adds:389",
     reconnect: true,
   });
@@ -29,7 +29,7 @@ loginRouter.post("/login", (req, res) => {
   });
 });
 
-loginRouter.post("/verify", (req, res) => {
+loginRouter.post("/verify", (req: Request, res: Response) => {
   const { token } = req.body;
   try {
     jwt.verify(token, "passkey");
