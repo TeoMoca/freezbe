@@ -1,9 +1,6 @@
 import express from "express";
-import { sequelize } from "../../database/database";
 
 export const ingredientsRouter = express.Router();
-
-const sequelizeQueryLauncher = sequelize.getQueryInterface();
 
 ingredientsRouter.get("/test", (req, res) => {
   res.status(200).json({
@@ -11,17 +8,17 @@ ingredientsRouter.get("/test", (req, res) => {
   });
 });
 
-ingredientsRouter.get("/all", (req, res) => {
-  sequelize
-    .model("Ingredients")
-    .findAll()
-    .then((response: Array<any>) =>
-      res.status(200).json({
-        message: "received ingredient",
-        data: response,
-      })
-    );
-});
+// ingredientsRouter.get("/all", (req, res) => {
+//   sequelize
+//     .model("Ingredients")
+//     .findAll()
+//     .then((response: Array<any>) =>
+//       res.status(200).json({
+//         message: "received ingredient",
+//         data: response,
+//       })
+//     );
+// });
 
 // ingredientsRouter.post("/add", (req, res) => {
 //   const { nom, description } = req.body;
