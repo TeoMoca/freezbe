@@ -50,7 +50,7 @@ export default defineComponent({
       ).value;
       this.$axios
         .post(
-          "http://localhost:8080/auth/login",
+          `http://${window.location.host}:8080/auth/login`,
           {
             username,
             password,
