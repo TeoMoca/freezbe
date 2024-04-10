@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import Cookies from "cookies-ts";
 import jwt from "jsonwebtoken";
@@ -14,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/home",
     name: "Home",
-    component: () => import("../views/HomeView.vue"),
+    component: HomeView,
   },
 ];
 
@@ -26,7 +27,6 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const token = cookies.get("token");
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET || "");
     if (to.path === "/" || !routes.some(({ path }) => path === to.path))
       return next({ path: "/home" });
     return next();
