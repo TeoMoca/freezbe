@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import Cookies from "cookies-ts";
 
@@ -13,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/home",
     name: "Home",
-    component: () => import("../views/HomeView.vue"),
+    component: HomeView,
   },
 ];
 
