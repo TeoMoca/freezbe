@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import Cookies from "cookies-ts";
+import jwt from "jsonwebtoken";
 
 const cookies = new Cookies();
 

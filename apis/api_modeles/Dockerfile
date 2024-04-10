@@ -7,6 +7,6 @@ COPY /package.json ./
 
 RUN npm install
 
-COPY /apis/api_modeles .
+COPY dist/apis/api_modeles .
 
 CMD [ "node", "server.js"]
